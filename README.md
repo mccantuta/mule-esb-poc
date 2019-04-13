@@ -1,2 +1,2 @@
 # mule-esb-poc
-Mule ESB proof concept
+Mule ESB proof of concept
