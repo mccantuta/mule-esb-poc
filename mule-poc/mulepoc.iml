@@ -4,11 +4,6 @@
     <facet type="Spring" name="Spring">
       <configuration />
     </facet>
-    <facet type="MULE_FACET_ID" name="Mule ESB">
-      <configuration>
-        <MuleFacet pathToSdk="$MODULE_DIR$/../../../../tools/mule-standalone-3.8.0" />
-      </configuration>
-    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -236,6 +231,5 @@
     <orderEntry type="library" scope="TEST" name="Maven: mockobjects:mockobjects-core:0.09" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
-    <orderEntry type="library" name="MuleESB-3.8.0" level="application" />
   </component>
 </module>
