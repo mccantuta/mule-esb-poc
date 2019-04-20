@@ -44,10 +44,10 @@
         <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://localhost:8082/orders" />
         <json:json-to-object-transformer returnClass="java.util.HashMap"  />
         <enricher source="#[payload.name]" target= "#[payload.orderDetailDTOList[0].productName]" >
-            <processor-chain>
+            <!--<processor-chain>-->
                 <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://user:password@localhost:8080/products"/>
-                <json:json-to-object-transformer returnClass="java.util.HashMap"  />
-            </processor-chain>
+                <!--<json:json-to-object-transformer returnClass="java.util.HashMap"  />-->
+            <!--</processor-chain>-->
         </enricher>
         <json:object-to-json-transformer />
         <logger message="payload #[payload]" level="INFO" />
