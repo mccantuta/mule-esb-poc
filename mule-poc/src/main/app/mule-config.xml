@@ -45,7 +45,7 @@
         <json:json-to-object-transformer returnClass="java.util.HashMap"  />
         <enricher source="#[payload.name]" target= "#[payload.orderDetailDTOList[0].productName]" >
             <processor-chain>
-                <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://user:password@localhost:8080/products"/>
+                <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://user:password@localhost:8080/products/#[payload.orderDetailDTOList[0].productId]"/>
                 <json:json-to-object-transformer returnClass="java.util.HashMap"  />
             </processor-chain>
         </enricher>
