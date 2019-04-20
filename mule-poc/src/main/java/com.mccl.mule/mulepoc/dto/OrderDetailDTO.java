@@ -1,4 +1,4 @@
-package com.mccl.mulepoc.orderservice.dto;
+package com.mccl.mule.mulepoc.dto;
 
 public class OrderDetailDTO {
     private Long id;

@@ -40,7 +40,16 @@
 
     <flow name="basic_tutorialFlow">
         <http:inbound-endpoint host="localhost" port="8081" method="GET" path="/orders2" />
-        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://localhost:8080/products"  />
+
+        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://localhost:8082/orders" />
+        <json:json-to-object-transformer returnClass="java.util.HashMap"  />
+        <enricher source="#[payload.name]" target= "#[payload.orderDetailDTOList[0].productName]" >
+            <processor-chain>
+                <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://user:password@localhost:8080/products"/>
+                <json:json-to-object-transformer returnClass="java.util.HashMap"  />
+            </processor-chain>
+        </enricher>
+        <json:object-to-json-transformer />
         <logger message="payload #[payload]" level="INFO" />
     </flow>
 </mule>
