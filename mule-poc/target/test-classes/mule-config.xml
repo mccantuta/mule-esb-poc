@@ -35,13 +35,13 @@
 			http://www.mulesoft.org/schema/mule/tcp http://www.mulesoft.org/schema/mule/tcp/current/mule-tcp.xsd">
 
     <description>
-    Mule proof of concept
+        Mule proof of concept
     </description>
 
     <flow name="basic_tutorialFlow">
-        <http:inbound-endpoint host="localhost" port="8081" method="GET" path="/orders2" />
+        <http:inbound-endpoint host="localhost" port="8081" method="GET" path="/orderDetails" />
 
-        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://localhost:8082/orders" />
+        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://localhost:8082/orders"  />
         <json:json-to-object-transformer returnClass="java.util.HashMap"  />
         <enricher source="#[payload.name]" target= "#[payload.orderDetailDTOList[0].productName]" >
             <processor-chain>
@@ -51,5 +51,9 @@
         </enricher>
         <json:object-to-json-transformer />
         <logger message="payload #[payload]" level="INFO" />
+
+        <catch-exception-strategy>
+            <logger message="error #[payload]" level="ERROR" />
+        </catch-exception-strategy>
     </flow>
 </mule>
